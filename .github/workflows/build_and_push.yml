@@ -1,8 +1,8 @@
 name: Build and Push 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - '*'
 jobs:
   test:
     name: Test
@@ -31,6 +31,7 @@ jobs:
           echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u ${{secrets.DOCKER_USERNAME}} --password-stdin;
       - name: Build, Tag and Push
         run: |
-          TAG="cflynnus/github-action-til-autoformat-readme:latest"
-          docker build . --file ./Dockerfile-source -t "$TAG";
+          GITHUB_TAG=$(echo $GITHUB_REF | cut -d / -f 3);
+          TAG="cflynnus/github-action-til-autoformat-readme";
+          docker build . --file ./Dockerfile-source -t "$TAG:$GITHUB_TAG";
           docker push "$TAG";
