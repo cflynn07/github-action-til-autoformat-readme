@@ -51,7 +51,7 @@ jobs:
 
 ### Generated README.md example
 
-You can see an example of a sample TIL repo with the action here:
+You can see an example of a sample TIL repo with the action here:  
 [cflynn07/til-autoformat-action-example](https://github.com/cflynn07/til-autoformat-action-example)
 
 ```markdown
@@ -84,7 +84,6 @@ _4 TILs and counting..._
 ### [biz](#biz)
   
 - [fooballs test hahhaha](biz/fooballs-test.md)
-  
 - [bizbabbasdf](biz/fooballs-test2.md)
   
 
