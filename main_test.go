@@ -8,16 +8,16 @@ import (
 )
 
 func TestOneTil(t *testing.T) {
-	repoDir = "./test_data/1_til"
+	repoPath = "./test_data/1_til"
 
 	main()
 
-	expected, err := ioutil.ReadFile(repoDir + "/README.md.expected")
+	expected, err := ioutil.ReadFile(repoPath + "/README.md.expected")
 	if err != nil {
 		t.Error(err)
 	}
 
-	actual, err := ioutil.ReadFile(repoDir + "/README.md")
+	actual, err := ioutil.ReadFile(repoPath + "/README.md")
 	if err != nil {
 		t.Error(err)
 	}
@@ -26,16 +26,16 @@ func TestOneTil(t *testing.T) {
 }
 
 func TestZeroTil(t *testing.T) {
-	repoDir = "./test_data/zero_til"
+	repoPath = "./test_data/zero_til"
 
 	main()
 
-	expected, err := ioutil.ReadFile(repoDir + "/README.md.expected")
+	expected, err := ioutil.ReadFile(repoPath + "/README.md.expected")
 	if err != nil {
 		t.Error(err)
 	}
 
-	actual, err := ioutil.ReadFile(repoDir + "/README.md")
+	actual, err := ioutil.ReadFile(repoPath + "/README.md")
 	if err != nil {
 		t.Error(err)
 	}
@@ -44,16 +44,16 @@ func TestZeroTil(t *testing.T) {
 }
 
 func TestManyTil(t *testing.T) {
-	repoDir = "./test_data/many_til"
+	repoPath = "./test_data/many_til"
 
 	main()
 
-	expected, err := ioutil.ReadFile(repoDir + "/README.md.expected")
+	expected, err := ioutil.ReadFile(repoPath + "/README.md.expected")
 	if err != nil {
 		t.Error(err)
 	}
 
-	actual, err := ioutil.ReadFile(repoDir + "/README.md")
+	actual, err := ioutil.ReadFile(repoPath + "/README.md")
 	if err != nil {
 		t.Error(err)
 	}

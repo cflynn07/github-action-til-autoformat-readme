@@ -15,7 +15,7 @@ import (
 	"text/template"
 )
 
-var repoDir = os.Getenv("REPO_DIR")
+var repoPath = os.Getenv("REPO_PATH")
 var templatePath = os.Getenv("TEMPLATE_PATH")
 
 var re = regexp.MustCompile(`^Date:\s*`)
@@ -31,7 +31,7 @@ type Til struct {
 // a file was added to the repository
 func cmdGetDate(file string) string {
 	c1 := exec.Command("git", "log", "--diff-filter=A", "--", file)
-	c1.Dir = repoDir
+	c1.Dir = repoPath
 	var commandOutput bytes.Buffer
 	c1.Stdout = &commandOutput
 
@@ -61,7 +61,7 @@ func main() {
 	// map of all catagories and respective TILs
 	tilsMap := make(map[string][]Til)
 	// tils = TIL markdown files
-	tils, _ := filepath.Glob(repoDir + "/**/*.md")
+	tils, _ := filepath.Glob(repoPath + "/**/*.md")
 
 	for _, til := range tils {
 		// grab the "catagory" and the "file"
@@ -118,13 +118,15 @@ func main() {
 
 	var output bytes.Buffer
 	err = t.Execute(&output, struct {
-		Tils        map[string][]Til
-		AllTils     []string
-		Description string
+		Tils                     map[string][]Til
+		AllTils                  []string
+		InputDescription         string
+		InputMarkdownLinksFooter string
 	}{
-		Tils:        tilsMap,
-		AllTils:     tils,
-		Description: os.Getenv("INPUT_DESCRIPTION"),
+		Tils:                     tilsMap,
+		AllTils:                  tils,
+		InputDescription:         os.Getenv("INPUT_DESCRIPTION"),
+		InputMarkdownLinksFooter: os.Getenv("INPUT_MARKDOWN_LINKS_FOOTER"),
 	})
 
 	if err != nil {
@@ -138,5 +140,5 @@ func main() {
 	fmt.Println("------------------------------------------------------------")
 
 	// truncates before writing
-	ioutil.WriteFile(repoDir+"/README.md", []byte(output.String()), 0644)
+	ioutil.WriteFile(repoPath+"/README.md", []byte(output.String()), 0644)
 }
