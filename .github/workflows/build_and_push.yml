@@ -13,15 +13,16 @@ jobs:
       - name: Test
         uses: cedrickring/golang-action/go1.14@1.5.2
         with:
-          args: go test ./... -coverprofile=coverage.txt -covermode=atomic -coverpkg=main
+          args: go test ./... -coverprofile=coverage.txt -covermode=atomic -coverpkg=til-autoformat-readme
         env:
           GO111MODULE: on
           GOFLAGS: -mod=vendor
-      - name: Upload Coverage to CodeCov
+      -1 name: Upload Coverage to CodeCov
         run: curl -s https://codecov.io/bash | bash -s -- -t ${{secrets.CODECOV_TOKEN}} -f ./coverage.txt
   build_and_push:
     name: Build and Push Images
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Checkout
         uses: actions/checkout@master
