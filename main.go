@@ -118,11 +118,13 @@ func main() {
 
 	var output bytes.Buffer
 	err = t.Execute(&output, struct {
-		Tils    map[string][]Til
-		AllTils []string
+		Tils        map[string][]Til
+		AllTils     []string
+		Description string
 	}{
-		Tils:    tilsMap,
-		AllTils: tils,
+		Tils:        tilsMap,
+		AllTils:     tils,
+		Description: os.Getenv("INPUT_DESCRIPTION"),
 	})
 
 	if err != nil {

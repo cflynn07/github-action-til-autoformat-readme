@@ -8,6 +8,4 @@ WORKDIR /root
 RUN apk update && apk add git
 COPY --from=builder /go/bin/main ./main 
 COPY --from=builder /go/src/app/README.md.tmpl ./README.md.tmpl
-ENV TEMPLATE_PATH "/root/README.md.tmpl"
-ENV REPO_DIR "/github/workspace"
 ENTRYPOINT [ "/root/main" ]
