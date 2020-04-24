@@ -1,16 +1,14 @@
 # action.yml
 name: 'TIL Auto-Format README'
-description: 'Automatically build a formatted README of TILs from a repository of TILs in markdown'
-#inputs:
-#  who-to-greet:  # id of input
-#    description: 'Who to greet'
-#    required: true
-#    default: 'World'
-#outputs:
-#  time: # id of output
-#    description: 'The time we greeted you'
+inputs:
+  description:
+    description: 'Description text block featured at the top of your README.md'
+    required: false
+    default: ''
+  markdown_links_footer:
+    description: 'Footer text block, can be used for things like markdown links'
+    required: false
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
-#    args:
-#      - ${{ inputs.who-to-greet }}

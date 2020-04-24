@@ -18,7 +18,7 @@ import (
 var repoPath = os.Getenv("REPO_PATH")
 var templatePath = os.Getenv("TEMPLATE_PATH")
 var inputDescription = os.Getenv("INPUT_DESCRIPTION")
-var inputMarkdownLinksFooter = os.Getenv("INPUT_MARKDOWN_LINKS_FOOTER")
+var inputFooter = os.Getenv("INPUT_FOOTER")
 
 var re = regexp.MustCompile(`^Date:\s*`)
 var re2 = regexp.MustCompile(`^#\s*`)
@@ -120,15 +120,15 @@ func main() {
 
 	var output bytes.Buffer
 	err = t.Execute(&output, struct {
-		Tils                     map[string][]Til
-		AllTils                  []string
-		InputDescription         string
-		InputMarkdownLinksFooter string
+		Tils             map[string][]Til
+		AllTils          []string
+		InputDescription string
+		InputFooter      string
 	}{
-		Tils:                     tilsMap,
-		AllTils:                  tils,
-		InputDescription:         inputDescription,
-		InputMarkdownLinksFooter: inputMarkdownLinksFooter,
+		Tils:             tilsMap,
+		AllTils:          tils,
+		InputDescription: inputDescription,
+		InputFooter:      inputFooter,
 	})
 
 	if err != nil {

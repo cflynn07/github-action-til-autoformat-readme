@@ -9,7 +9,7 @@ import (
 
 func setup() {
 	inputDescription = ""
-	inputMarkdownLinksFooter = ""
+	inputFooter = ""
 	templatePath = "./README.md.tmpl"
 }
 
@@ -62,7 +62,7 @@ func TestOneTilInputs(t *testing.T) {
 	setup()
 	repoPath = "./test_data/many_with_inputs"
 	inputDescription = "This is a placeholder description used for testing."
-	inputMarkdownLinksFooter = "here is where the markdown footer links would go"
+	inputFooter = "here is where the markdown footer links would go"
 	main()
 	expected, err := ioutil.ReadFile(repoPath + "/README.md.expected")
 	if err != nil {
