@@ -17,7 +17,7 @@ can add this GitHub action to generate a nice README when you push a new TIL.
 
 ### How To Use
 Add this Action to your TIL repo. Here's an example:
-###### /.github/workflows/build.yml
+###### .github/workflows/build.yml
 ```yaml
 name: Build README
 on:
