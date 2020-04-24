@@ -17,7 +17,7 @@ jobs:
         env:
           GO111MODULE: on
           GOFLAGS: -mod=vendor
-      -1 name: Upload Coverage to CodeCov
+      - name: Upload Coverage to CodeCov
         run: curl -s https://codecov.io/bash | bash -s -- -t ${{secrets.CODECOV_TOKEN}} -f ./coverage.txt
   build_and_push:
     name: Build and Push Images
