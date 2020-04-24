@@ -12,7 +12,7 @@ public and how he uses GitHub actions to automatically create a formatted
 README.md summary of his TILs when he pushes code. I saw this and thought,
 hey if we use GitHub actions to do this, why not make a GitHub Action?
 
-If you have a TIL repository with TILs organized into folders by catagory you
+If you have a TIL repository with TILs organized into folders by category you
 can add this GitHub action to generate a nice README when you push a new TIL.
 
 ### How To Use
@@ -67,7 +67,7 @@ _4 TILs and counting..._
 
 ---
 
-### Catagories
+### Categories
 
 - [bang](#bang)
 - [bar](#bar)

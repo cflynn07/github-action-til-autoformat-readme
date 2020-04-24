@@ -11,17 +11,17 @@ _{{ len .AllTils }} TILs and counting..._
 
 ---
 
-### Catagories
-{{/* CATAGORY INDEX */}}
-{{- range $catagory, $tils := .Tils }}
-- [{{ $catagory }}](#{{ $catagory }})
+### Categories
+{{/* CATEGORY INDEX */}}
+{{- range $category, $tils := .Tils }}
+- [{{ $category }}](#{{ $category }})
 {{- end }}
-{{- /* TILS GROUPED BY CATAGORIES */ -}}
-{{ range $catagory, $tils := .Tils }}
+{{- /* TILS GROUPED BY CATEGORIES */ -}}
+{{ range $category, $tils := .Tils }}
 
-### [{{ $catagory }}](#{{ $catagory }})
+### [{{ $category }}](#{{ $category }})
 {{- range $index, $til := $tils }}
-- {{ with $til }}[{{ .Title }}]({{ $catagory }}/{{ .Filename }}){{- end }}
+- {{ with $til }}[{{ .Title }}]({{ $category }}/{{ .Filename }}){{- end }}
 {{- end }}
 {{- end }}
 
