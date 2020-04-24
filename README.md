@@ -8,11 +8,16 @@ A GitHub action that can be used with a TIL repo to autogenerate a README.md.
 I came across [this post (Using a self-rewriting README powered by GitHub
 Actions to track TILs)][1] from [Simon Willison][3] on Hacker News and thought
 it was a pretty good idea. The author talks about how he uses TILs to learn in
-public and also how he uses GitHub actions to automatically create a formatted
-README.md summary of his TILs whenever he pushes code. I saw this and thought,
+public and how he uses GitHub actions to automatically create a formatted
+README.md summary of his TILs when he pushes code. I saw this and thought,
 hey if we use GitHub actions to do this, why not make a GitHub Action?
 
-### How to use
+If you have a TIL repository with TILs organized into folders by catagory you
+can add this GitHub action to generate a nice README when you push a new TIL.
+
+### How To Use
+Add this Action to your TIL repo. Here's an example:
+###### /.github/workflows/build.yml
 ```yaml
 name: Build README
 on:
@@ -44,6 +49,10 @@ jobs:
           [2]: https://github.com/jbranchaud/til
 ```
 
+### Generated README.md example
+
+You can see an example of a sample TIL repo with the action here:
+[cflynn07/til-autoformat-action-example](https://github.com/cflynn07/til-autoformat-action-example)
 
 ```markdown
 # TIL
@@ -52,7 +61,7 @@ jobs:
 A collection of concrete writeups of small things I learn daily while working
 and researching. My goal is to work in public. I was inspired to start this
 repository after reading Simon Wilson's [hacker new post][1], and he was
-apparently inspired by Josh Branchaud's [TIL collection].
+apparently inspired by Josh Branchaud's [TIL collection][2].
 
 _4 TILs and counting..._
 
