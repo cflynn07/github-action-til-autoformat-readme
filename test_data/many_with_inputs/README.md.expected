@@ -1,11 +1,9 @@
 # TIL
 > Today I Learned
 
+This is a placeholder description used for testing.
 
-A collection of concrete writeups of small things I learn daily.
-
-
-_5 TILs and counting..._
+_3 TILs and counting..._
 
 ---
 
@@ -23,7 +21,5 @@ _5 TILs and counting..._
 
 ### [k8s](#k8s)
 - [how to blow up a k8s cluster](k8s/how-to-blow-up-a-cluster.md)
-- [How to create a k8s service](k8s/how-to-create-a-service.md)
-- [how to stand on your head](k8s/how-to-stand-on-your-head.md)
 
-
+here is where the markdown footer links would go

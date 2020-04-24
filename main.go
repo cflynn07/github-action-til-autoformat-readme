@@ -17,6 +17,8 @@ import (
 
 var repoPath = os.Getenv("REPO_PATH")
 var templatePath = os.Getenv("TEMPLATE_PATH")
+var inputDescription = os.Getenv("INPUT_DESCRIPTION")
+var inputMarkdownLinksFooter = os.Getenv("INPUT_MARKDOWN_LINKS_FOOTER")
 
 var re = regexp.MustCompile(`^Date:\s*`)
 var re2 = regexp.MustCompile(`^#\s*`)
@@ -125,8 +127,8 @@ func main() {
 	}{
 		Tils:                     tilsMap,
 		AllTils:                  tils,
-		InputDescription:         os.Getenv("INPUT_DESCRIPTION"),
-		InputMarkdownLinksFooter: os.Getenv("INPUT_MARKDOWN_LINKS_FOOTER"),
+		InputDescription:         inputDescription,
+		InputMarkdownLinksFooter: inputMarkdownLinksFooter,
 	})
 
 	if err != nil {
