@@ -13,7 +13,7 @@ jobs:
       - name: Test
         uses: cedrickring/golang-action/go1.14@1.5.2
         with:
-          args: go test ./... -coverprofile=coverage.txt -covermode=atomic -coverpkg=til-autoformat-readme
+          args: go test ./... -coverprofile=coverage.txt -covermode=atomic -coverpkg=til-autoformat-readme -v
         env:
           GO111MODULE: on
           GOFLAGS: -mod=vendor
