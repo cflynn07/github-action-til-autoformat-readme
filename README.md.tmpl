@@ -10,7 +10,12 @@ A collection of concrete writeups of small things I learn daily.
 _{{ len .AllTils }} TILs and counting..._
 
 ---
-
+{{ if .MostRecentTils }}
+### {{ len .MostRecentTils }} most recent TILs
+{{ range $til := .MostRecentTils }}
+- [{{ $til.Title }}]({{ $til.Category }}/{{ $til.Filename }})
+{{- end }}
+{{ end }}
 ### Categories
 {{/* CATEGORY INDEX */}}
 {{- range $category, $tils := .Tils }}

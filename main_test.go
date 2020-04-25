@@ -74,3 +74,21 @@ func TestOneTilInputs(t *testing.T) {
 	}
 	assert.Equal(t, string(expected), string(actual))
 }
+
+func TestOneTilInputsAndMostRecent(t *testing.T) {
+	setup()
+	repoPath = "./test_data/many_with_inputs_and_most_recent"
+	inputDescription = "This is a placeholder description used for testing."
+	inputFooter = "here is where the markdown footer links would go"
+	inputListMostRecent = "3"
+	main()
+	expected, err := ioutil.ReadFile(repoPath + "/README.md.expected")
+	if err != nil {
+		t.Error(err)
+	}
+	actual, err := ioutil.ReadFile(repoPath + "/README.md")
+	if err != nil {
+		t.Error(err)
+	}
+	assert.Equal(t, string(expected), string(actual))
+}

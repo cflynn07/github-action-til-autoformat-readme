@@ -1,0 +1,31 @@
+# TIL
+> Today I Learned
+
+This is a placeholder description used for testing.
+
+_3 TILs and counting..._
+
+---
+
+### 3 most recent TILs
+
+- [How to add a CSS border](css/how-to-add-a-border.md)
+- [How to make a div](html/how-to-make-a-div.md)
+- [how to blow up a k8s cluster](k8s/how-to-blow-up-a-cluster.md)
+
+### Categories
+
+- [css](#css)
+- [html](#html)
+- [k8s](#k8s)
+
+### [css](#css)
+- [How to add a CSS border](css/how-to-add-a-border.md)
+
+### [html](#html)
+- [How to make a div](html/how-to-make-a-div.md)
+
+### [k8s](#k8s)
+- [how to blow up a k8s cluster](k8s/how-to-blow-up-a-cluster.md)
+
+here is where the markdown footer links would go
