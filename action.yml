@@ -1,6 +1,8 @@
 name: 'TIL Auto-Format README'
-description: A GitHub action that can be used with a TIL repo to autogenerate a README.md.
-author: Casey Flynn <cflynn07>
+description: 'A GitHub action that can be used with a TIL repo to autogenerate a README.md.'
+author: 'Casey Flynn <cflynn07>'
+icon: 'align-left'
+color: 'purple'
 inputs:
   description:
     description: 'Description text block featured at the top of your README.md'
