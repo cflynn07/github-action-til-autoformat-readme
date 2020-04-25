@@ -60,17 +60,17 @@ func cmdGetDate(file string) string {
 }
 
 func main() {
-	// map of all catagories and respective TILs
+	// map of all categories and respective TILs
 	tilsMap := make(map[string][]Til)
 	// tils = TIL markdown files
 	tils, _ := filepath.Glob(repoPath + "/**/*.md")
 
 	for _, til := range tils {
-		// grab the "catagory" and the "file"
-		// ex: html/div-tags.md -- catagory "html" file "div-tags.md"
+		// grab the "category" and the "file"
+		// ex: html/div-tags.md -- category "html" file "div-tags.md"
 		splitResult := strings.Split(til, "/")
 		length := len(splitResult)
-		catagory := splitResult[length-2]
+		category := splitResult[length-2]
 		file := splitResult[length-1]
 
 		if strings.ToLower(file) == "readme.md" {
@@ -93,16 +93,16 @@ func main() {
 		linkTitle = re2.ReplaceAllString(linkTitle, "")
 		linkTitle = strings.TrimSpace(linkTitle)
 
-		// if catagory first encountered in loop so far, append new map key, otherwise
+		// if category first encountered in loop so far, append new map key, otherwise
 		// add to existing
-		if _, exists := tilsMap[catagory]; exists {
-			tilsMap[catagory] = append(tilsMap[catagory], Til{
+		if _, exists := tilsMap[category]; exists {
+			tilsMap[category] = append(tilsMap[category], Til{
 				Title:     linkTitle,
 				Filename:  file,
 				DateAdded: cmdGetDate(til),
 			})
 		} else {
-			tilsMap[catagory] = []Til{
+			tilsMap[category] = []Til{
 				Til{
 					Title:     linkTitle,
 					Filename:  file,
