@@ -58,18 +58,28 @@ func cmdTrimMostRecentTils(tils *[]Til, n int) {
 // a file was added to the repository
 func cmdGetDate(file *string) string {
 	c1 := exec.Command("git", "log", "--diff-filter=A", "--", *file)
-	c1.Dir = path.Dir(templatePath)
+	c1.Dir = repoPath
 	var commandOutput bytes.Buffer
+	var commandErrorOutput bytes.Buffer
 	c1.Stdout = &commandOutput
+	c1.Stderr = &commandErrorOutput
 
 	err := c1.Start()
 	if err != nil {
-		log.Panic(err)
+		fmt.Println("start error")
+		fmt.Println(commandErrorOutput.String())
+		fmt.Println(*file)
+		fmt.Println(err)
+		return ""
 	}
 
 	err = c1.Wait()
 	if err != nil {
-		log.Panic(err)
+		fmt.Println("finish error")
+		fmt.Println(commandErrorOutput.String())
+		fmt.Println(*file)
+		fmt.Println(err)
+		return ""
 	}
 
 	date := ""
@@ -80,7 +90,6 @@ func cmdGetDate(file *string) string {
 			break
 		}
 	}
-
 	return date
 }
 
