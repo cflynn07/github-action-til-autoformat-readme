@@ -1,0 +1,3 @@
+test: export REPO_PATH=$(pwd)
+test:
+	go test -v -cover ./...

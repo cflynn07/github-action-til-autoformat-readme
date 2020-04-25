@@ -8,10 +8,14 @@ inputs:
     description: 'Description text block featured at the top of your README.md'
     required: false
     default: ''
-  markdown_links_footer:
+  footer:
     description: 'Footer text block, can be used for things like markdown links'
     required: false
     default: ''
+  list_most_recent:
+    description: 'List most recent n TILs in section below description'
+    required: false
+    default: '0'
 runs:
   using: 'docker'
   image: 'Dockerfile'

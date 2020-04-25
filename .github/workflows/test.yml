@@ -1,0 +1,21 @@
+name: Test
+on:
+  push:
+    branches:
+      - '*'
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Test
+        uses: cedrickring/golang-action/go1.14@1.5.2
+        with:
+          args: go test ./... -coverprofile=coverage.txt -covermode=atomic -coverpkg=til-autoformat-readme
+        env:
+          GO111MODULE: on
+          GOFLAGS: -mod=vendor
+      - name: Upload Coverage to CodeCov
+        run: curl -s https://codecov.io/bash | bash -s -- -t ${{secrets.CODECOV_TOKEN}} -f ./coverage.txt
