@@ -102,7 +102,6 @@ func main() {
 	tils, _ := filepath.Glob(repoPath + "/**/*.md")
 
 	for _, til := range tils {
-		fmt.Println("processing: " + til)
 		// grab the "category" and the "file"
 		// ex: html/div-tags.md -- category "html" file "div-tags.md"
 		splitResult := strings.Split(til, "/")
