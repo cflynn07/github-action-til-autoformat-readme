@@ -5,6 +5,8 @@
 
 A GitHub action that can be used with a TIL repo to autogenerate a README.md. 
 
+![TIL Repo Example](./Screen_Shot_2020-04-27_at_3.44.38_PM.png)
+
 I came across [this post (Using a self-rewriting README powered by GitHub
 Actions to track TILs)][1] from [Simon Willison][3] on Hacker News and thought
 it was a pretty good idea. The author talks about how he uses TILs to learn in
