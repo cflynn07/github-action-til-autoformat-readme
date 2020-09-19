@@ -16,6 +16,10 @@ inputs:
     description: 'List most recent n TILs in section below description'
     required: false
     default: '0'
+  date_format:
+    required: false
+    description: 'Date format visible on list of most recent TILs. Must follow Go time format guidelines'
+    default: '02 Jan 06 15:04 MST'
 runs:
   using: 'docker'
   image: 'Dockerfile'
