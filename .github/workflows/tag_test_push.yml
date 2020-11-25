@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
+        with:
+          fetch-depth: '0'
       - name: Test
         uses: cedrickring/golang-action/go1.14@1.5.2
         with:
