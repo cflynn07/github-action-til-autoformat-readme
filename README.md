@@ -2,7 +2,7 @@
 
 [![codecov](https://codecov.io/gh/cflynn07/github-action-til-autoformat-readme/branch/master/graph/badge.svg)](https://codecov.io/gh/cflynn07/github-action-til-autoformat-readme)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a2d85af2b4450ba36c63/maintainability)](https://codeclimate.com/github/cflynn07/github-action-til-autoformat-readme/maintainability)
-[![Tests](https://github.com/cflynn07/github-action-til-autoformat-readme/workflows/Tag%20Test%20Push/badge.svg)](https://github.com/cflynn07/github-action-til-autoformat-readme/workflows/Tag%20Test%20Push/badge.svg)
+[![Tests](https://github.com/cflynn07/github-action-til-autoformat-readme/workflows/Tag%20Test%20Push/badge.svg)](https://github.com/cflynn07/github-action-til-autoformat-readme/actions?query=workflow%3A%22Tag+Test+Push%22)
 
 A GitHub action that can be used with a TIL repo to autogenerate a README.md. 
 
