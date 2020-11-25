@@ -23,19 +23,16 @@ var templatePath = os.Getenv("TEMPLATE_PATH")
 var inputDescription = os.Getenv("INPUT_DESCRIPTION")
 var inputFooter = os.Getenv("INPUT_FOOTER")
 var inputListMostRecent = os.Getenv("INPUT_LIST_MOST_RECENT")
+var inputDateFormat = os.Getenv("INPUT_DATE_FORMAT")
 
 var re = regexp.MustCompile(`^Date:\s*`)
 var re2 = regexp.MustCompile(`^#\s*`)
-
-// I have no idea what RFC standard this may be (if any) but it's the format git
-// seems to use to record datetime
-const timeFormat = "Mon Jan 02 15:04:05 2006 -0700"
 
 type Til struct {
 	Title     string
 	Filename  string
 	Category  string
-	DateAdded string
+	DateAdded time.Time
 }
 
 // sort TILs by DateAdded (DESC) and return n most recent
@@ -47,17 +44,17 @@ func cmdTrimMostRecentTils(tils *[]Til, n int) {
 		n = len(*tils)
 	}
 	sort.Slice(*tils, func(i, j int) bool {
-		iTime, _ := time.Parse(timeFormat, (*tils)[i].DateAdded)
-		jTime, _ := time.Parse(timeFormat, (*tils)[j].DateAdded)
-		return iTime.After(jTime)
+		first := (*tils)[i].DateAdded
+		second := (*tils)[j].DateAdded
+		return first.After(second)
 	})
 	*tils = (*tils)[0:n]
 }
 
-// run a git cli command, the capture and parse the output to extact the date
+// run a git cli command, the capture and parse the output to extract the date
 // a file was added to the repository
-func cmdGetDate(file *string) string {
-	c1 := exec.Command("git", "log", "--diff-filter=A", "--", *file)
+func cmdGetDate(file string) time.Time {
+	c1 := exec.Command("git", "log", "--diff-filter=A", "--date=rfc", "--", file)
 	c1.Dir = repoPath
 	var commandOutput bytes.Buffer
 	var commandErrorOutput bytes.Buffer
@@ -68,25 +65,26 @@ func cmdGetDate(file *string) string {
 	if err != nil {
 		fmt.Println("start error")
 		fmt.Println(commandErrorOutput.String())
-		fmt.Println(*file)
+		fmt.Println(file)
 		fmt.Println(err)
-		return ""
+		return time.Time{}
 	}
 
 	err = c1.Wait()
 	if err != nil {
 		fmt.Println("finish error")
 		fmt.Println(commandErrorOutput.String())
-		fmt.Println(*file)
+		fmt.Println(file)
 		fmt.Println(err)
-		return ""
+		return time.Time{}
 	}
 
-	date := ""
+	date := time.Time{}
 	for _, outputLine := range strings.Split(commandOutput.String(), "\n") {
 		if re.MatchString(outputLine) {
 			// strip "Date: " substring from matching line
-			date = re.ReplaceAllString(outputLine, "")
+			var strippedDate = re.ReplaceAllString(outputLine, "")
+			date, _ = time.Parse(time.RFC1123Z, strippedDate)
 			break
 		}
 	}
@@ -135,7 +133,7 @@ func main() {
 			Title:     linkTitle,
 			Filename:  file,
 			Category:  category,
-			DateAdded: cmdGetDate(&til),
+			DateAdded: cmdGetDate(category + "/" + file),
 		}
 
 		if _, exists := tilsMap[category]; exists {
@@ -167,12 +165,14 @@ func main() {
 		InputDescription string
 		InputFooter      string
 		MostRecentTils   []Til
+		InputDateFormat  string
 	}{
 		Tils:             tilsMap,
 		AllTils:          tils,
 		InputDescription: inputDescription,
 		InputFooter:      inputFooter,
 		MostRecentTils:   tilsSlice,
+		InputDateFormat:  inputDateFormat,
 	})
 
 	if err != nil {

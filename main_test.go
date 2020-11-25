@@ -3,6 +3,7 @@ package main
 import (
 	"io/ioutil"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -75,14 +76,13 @@ func TestOneTilInputs(t *testing.T) {
 	assert.Equal(t, string(expected), string(actual))
 }
 
-/*
-This test wont work ATM, DateAdded different in CI
 func TestOneTilInputsAndMostRecent(t *testing.T) {
 	setup()
 	repoPath = "./test_data/many_with_inputs_and_most_recent"
 	inputDescription = "This is a placeholder description used for testing."
 	inputFooter = "here is where the markdown footer links would go"
 	inputListMostRecent = "3"
+	inputDateFormat = time.RFC822
 	main()
 	expected, err := ioutil.ReadFile(repoPath + "/README.md.expected")
 	if err != nil {
@@ -94,4 +94,3 @@ func TestOneTilInputsAndMostRecent(t *testing.T) {
 	}
 	assert.Equal(t, string(expected), string(actual))
 }
-*/
