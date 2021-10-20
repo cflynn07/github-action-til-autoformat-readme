@@ -39,7 +39,7 @@ jobs:
         # necessary for github-action-til-autoformat-readme
         fetch-depth: 0
     - name: Autoformat README
-      uses: cflynn07/github-action-til-autoformat-readme@1.1.0
+      uses: cflynn07/github-action-til-autoformat-readme@1.2.0
       with:
         description: |
           A collection of concrete writeups of small things I learn daily while working
