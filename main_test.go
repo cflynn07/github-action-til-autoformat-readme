@@ -59,6 +59,21 @@ func TestManyTil(t *testing.T) {
 	assert.Equal(t, string(expected), string(actual))
 }
 
+func TestManyTilToLowercase(t *testing.T) {
+	setup()
+	repoPath = "./test_data/many_til_to_lowercase"
+	main()
+	expected, err := ioutil.ReadFile(repoPath + "/README.md.expected")
+	if err != nil {
+		t.Error(err)
+	}
+	actual, err := ioutil.ReadFile(repoPath + "/README.md")
+	if err != nil {
+		t.Error(err)
+	}
+	assert.Equal(t, string(expected), string(actual))
+}
+
 func TestOneTilInputs(t *testing.T) {
 	setup()
 	repoPath = "./test_data/many_with_inputs"
