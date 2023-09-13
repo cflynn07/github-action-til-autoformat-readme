@@ -104,7 +104,7 @@ func main() {
 		// ex: html/div-tags.md -- category "html" file "div-tags.md"
 		splitResult := strings.Split(til, "/")
 		length := len(splitResult)
-		category := splitResult[length-2]
+		category := strings.ToLower(splitResult[length-2])
 		file := splitResult[length-1]
 
 		if strings.ToLower(file) == "readme.md" {
