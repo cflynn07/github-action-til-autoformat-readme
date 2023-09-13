@@ -1,4 +1,4 @@
-name: Branch Test Push
+name: Branch Test
 on:
   push:
     branches-ignore:

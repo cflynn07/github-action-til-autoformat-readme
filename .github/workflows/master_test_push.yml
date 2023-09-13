@@ -1,4 +1,4 @@
-name: Branch Test Push
+name: Master Test Push
 on:
   push:
     branches:
