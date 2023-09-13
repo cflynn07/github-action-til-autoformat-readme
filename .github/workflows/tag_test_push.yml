@@ -36,4 +36,4 @@ jobs:
           GITHUB_TAG=$(echo $GITHUB_REF | cut -d / -f 3);
           TAG="cflynnus/github-action-til-autoformat-readme";
           docker build . --file ./Dockerfile-source -t "$TAG:$GITHUB_TAG";
-          docker push "$TAG";
+          docker push "$TAG:$GITHUB_TAG";
