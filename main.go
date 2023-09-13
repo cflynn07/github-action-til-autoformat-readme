@@ -97,6 +97,8 @@ func main() {
 	// list of all (non-grouped by category) TILs for use with `list_most_recent` feature
 	var tilsSlice []Til
 	// tils = TIL markdown files
+	// note tils sorted lexicographically which may differ from how
+	// they're presented in an IDE
 	tils, _ := filepath.Glob(repoPath + "/**/*.md")
 
 	for _, til := range tils {
@@ -104,7 +106,8 @@ func main() {
 		// ex: html/div-tags.md -- category "html" file "div-tags.md"
 		splitResult := strings.Split(til, "/")
 		length := len(splitResult)
-		category := strings.ToLower(splitResult[length-2])
+		// category := strings.ToLower(splitResult[length-2])
+		category := splitResult[length-2]
 		file := splitResult[length-1]
 
 		if strings.ToLower(file) == "readme.md" {
@@ -153,7 +156,9 @@ func main() {
 	cmdTrimMostRecentTils(&tilsSlice, n)
 
 	// load and execute template, write results to README.md
-	t, err := template.New(path.Base(templatePath)).ParseFiles(templatePath)
+	t, err := template.New(path.Base(templatePath)).Funcs(template.FuncMap{
+		"toLower": strings.ToLower,
+	}).ParseFiles(templatePath)
 	if err != nil {
 		log.Panic(err)
 	}

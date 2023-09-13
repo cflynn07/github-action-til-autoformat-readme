@@ -19,12 +19,12 @@ _{{ len .AllTils }} TILs and counting..._
 ### Categories
 {{/* CATEGORY INDEX */}}
 {{- range $category, $tils := .Tils }}
-- [{{ $category }}](#{{ $category }})
+- [{{ $category }}](#{{ $category | toLower }})
 {{- end }}
 {{- /* TILS GROUPED BY CATEGORIES */ -}}
 {{ range $category, $tils := .Tils }}
 
-### [{{ $category }}](#{{ $category }})
+### [{{ $category }}](#{{ $category | toLower }})
 {{- range $index, $til := $tils }}
 - {{ with $til }}[{{ .Title }}]({{ $category }}/{{ .Filename }}){{- end }}
 {{- end }}
